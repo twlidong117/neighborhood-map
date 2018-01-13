@@ -7,28 +7,29 @@
     <title>Neighborhood Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="main.css" />
-    <script src="main.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/knockout/3.4.2/knockout-min.js"></script>
 </head>
 
 <body>
     <!-- header -->
     <header>
         <h1>Neighbourhood Map</h1>
-        <button id="menuBtn">+</button>
-        <div id="filter">
+        <button id="menuBtn" data-bind="click: toggleLocList">+</button>
+        <div id="filter" data-bind="visible: isShowLocList">
             <form action="" id="filterForm">
-                <input type="text" placeholder="input location">
-                <button id="filterBtn" type="submit">Filter</button>
+                <input type="text" placeholder="input location" data-bind="textInput: filterString">
+                <button id="filterBtn" type="submit" data-bind="click: onFilter">Filter</button>
             </form>
-            <ul id="filterList">
-                <li>location1</li>
-                <li>location1</li>
-                <li>location1</li>
+            <ul id="filterList" data-bind="foreach: locList">
+                <li data-bind="text: title"></li>
             </ul>
         </div>
     </header>
     <!-- map -->
     <div id="map"></div>
+    <script src="main.js"></script>
+    <script src="map.js"></script>
     <script src="http://webapi.amap.com/maps?v=1.4.2&key=c3d99f483d29de2cc86bdf7f3e7ffdc9&callback=initMap"></script>
 </body>
 
