@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Neighborhood Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <h1>Neighbourhood Map</h1>
+        <button id="menuBtn">+</button>
+        <div id="filter">
+            <form action="" id="filterForm">
+                <input type="text" placeholder="input location">
+                <button id="filterBtn" type="submit">Filter</button>
+            </form>
+            <ul id="filterList">
+                <li>location1</li>
+                <li>location1</li>
+                <li>location1</li>
+            </ul>
+        </div>
+    </header>
+    <!-- map -->
+    <div id="map"></div>
+    <script src="http://webapi.amap.com/maps?v=1.4.2&key=c3d99f483d29de2cc86bdf7f3e7ffdc9&callback=initMap"></script>
+</body>
+
+</html>
