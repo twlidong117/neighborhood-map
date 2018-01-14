@@ -18,8 +18,8 @@ const locArr = [{
     title: '上海交通大学',
     id: 3
 }, {
-    position: [121.503584, 31.296426],
-    title: '复旦大学',
+    position: [121.40468, 31.227938],
+    title: '华东师范大学',
     id: 4
 }, {
     position: [121.505614, 31.235299],
@@ -35,12 +35,13 @@ const locArr = [{
     id: 7
 }];
 
-
+/**
+ * 地图对象，全局变量
+ */
+let mapObj;
 /**
  * 地图加载函数
  */
-let mapObj;
-
 function initMap() {
     mapObj = new LocalMap(locArr);
 }
@@ -51,14 +52,30 @@ function initMap() {
  * @class ViewModel
  */
 class ViewModel {
+    /**
+     * 构造函数
+     */
     constructor() {
+        // 是否展示地点列表
         this.isShowLocList = ko.observable(false);
+        // 输入的筛选文字
         this.filterString = ko.observable('');
+        // 地点数组
         this.locList = ko.observableArray(locArr);
     }
+
+    /**
+     * 展开/回收地点列表
+     */
     toggleLocList() {
         this.isShowLocList(!this.isShowLocList());
     }
+
+    /**
+     * 过滤地点列表函数
+     * @param {Object} vm 数据模型viewmodel
+     * @param {Object} ev 事件 
+     */
     onFilter(vm, ev) {
         ev.preventDefault();
         let queryString = this.filterString();
@@ -68,11 +85,14 @@ class ViewModel {
         mapObj.infoWindow.close();
         mapObj.updateMarkers(filterList);
     }
-    onLocClick(location, ev) {
+
+    /**
+     * 地点项的click事件回调
+     * @param {Object} location 地点数组项
+     */
+    onLocClick(location) {
         mapObj.onSelected(location.id);
     }
 }
 
-let viewModel = new ViewModel();
-
-ko.applyBindings(viewModel, document.body);
+ko.applyBindings(new ViewModel(), document.body);
