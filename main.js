@@ -2,41 +2,37 @@
  * 地图地点数组
  */
 const locArr = [{
-    position: [121.471366, 31.190301],
-    title: '龙美术馆(西岸馆)',
+    position: [121.47519, 31.228833],
+    title: '上海人民广场',
     id: 0
 }, {
-    position: [121.518997, 31.222187],
-    title: '上海艺仓美术馆',
+    position: [121.491854, 31.227003],
+    title: '豫园',
     id: 1
 }, {
-    position: [121.479416, 31.23735],
-    title: '上海当代艺术馆',
+    position: [121.499854, 31.239528],
+    title: '东方明珠',
     id: 2
 }, {
-    position: [121.482571, 31.222296],
-    title: '设季荟·拉法耶艺术设计中心',
+    position: [121.433117, 31.199008],
+    title: '上海交通大学',
     id: 3
 }, {
-    position: [121.568411, 31.215064],
-    title: '喜玛拉雅美术馆',
+    position: [121.503584, 31.296426],
+    title: '复旦大学',
     id: 4
 }, {
-    position: [121.504544, 31.233696],
-    title: '上海外滩星空艺术馆',
+    position: [121.505614, 31.235299],
+    title: '金茂大厦',
     id: 5
 }, {
-    position: [121.46834, 31.176691],
-    title: '余德耀美术馆',
+    position: [121.552556, 31.215723],
+    title: '世纪公园',
     id: 6
 }, {
-    position: [121.425622, 31.21586],
-    title: '刘海粟美术馆',
+    position: [121.494725, 31.184385],
+    title: '中华艺术宫',
     id: 7
-}, {
-    position: [121.632395, 31.217765],
-    title: '昊美术馆',
-    id: 8
 }];
 
 
@@ -69,11 +65,14 @@ class ViewModel {
         let filterList = locArr.filter((item) => (item.title.indexOf(queryString) !== -1));
         this.locList(filterList);
         mapObj.resetMarkerAnimation();
+        mapObj.infoWindow.close();
         mapObj.updateMarkers(filterList);
     }
-    onLocClick(location) {
+    onLocClick(location, ev) {
         mapObj.onSelected(location.id);
     }
 }
 
-ko.applyBindings(new ViewModel(), document.body);
+let viewModel = new ViewModel();
+
+ko.applyBindings(viewModel, document.body);

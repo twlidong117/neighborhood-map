@@ -119,6 +119,14 @@ header>h1 {
 #filterList>li {
     height: 30px;
     line-height: 30px;
+    cursor: pointer;
+    padding: 2px 0 2px 10px;
+}
+
+#filterList>li:hover,
+.loc-selected {
+    color: #fff;
+    background: #3385ff;
 }
 
 #map {
