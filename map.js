@@ -57,7 +57,6 @@ class LocalMap {
     resetMarkerAnimation() {
         this.markers.map((item) => {
             item.setAnimation('AMAP_ANIMATION_NONE');
-            item.show();
         });
     }
 }
