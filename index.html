@@ -22,7 +22,7 @@
                 <button id="filterBtn" type="submit" data-bind="click: onFilter">Filter</button>
             </form>
             <ul id="filterList" data-bind="foreach: locList">
-                <li data-bind="text: title"></li>
+                <li data-bind="text: title, click: $parent.onLocClick"></li>
             </ul>
         </div>
     </header>
